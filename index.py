@@ -8,8 +8,8 @@ class Comerce:
 
     @my_decorators.greet_the_client
     def expend_tiket(self):
-        resp = f'{self.key}-{str(self.number).zfill(2)}'
         self.number += 1
+        resp = f'{self.key}-{str(self.number).zfill(2)}'
         print(resp)
 
     def show_last_tikeck(self):
@@ -26,7 +26,7 @@ def init():
 
     while menu_option != 'E':
         print('Take a ticket for: Pharmacy(F), Cosmetics(C), Perfumery(P), show queue(Q) or Exit(E)')
-        menu_option = input('Select an option please: ')
+        menu_option = input('Select an option please: ').upper()
 
         if menu_option == 'F':
             pharmacy.expend_tiket()
@@ -35,11 +35,12 @@ def init():
         elif menu_option == 'P':
             perfumery.expend_tiket()
         elif menu_option == 'Q':
-            print('The queue is:')
+            print('*' * 26)
+            print('The queue is:\n')
             for comerce in comerces:
                 comerce.show_last_tikeck()
-            print('Take a ticket and wait to be served. Thanks!')
-
+            print('\nTake a ticket and wait to be served. Thanks!')
+            print('*' * 26)
     print("Thanks for operating whith us!")
 
 init()
